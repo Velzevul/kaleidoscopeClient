@@ -1,7 +1,8 @@
 import { 
   REQUEST_FETCH_TRAIL, 
   CONFIRM_FETCH_TRAIL,
-  REJECT_FETCH_TRAIL
+  REJECT_FETCH_TRAIL,
+  CLEAR_TRAIL
 } from './actions';
 import initialState from './initialState';
 
@@ -27,6 +28,8 @@ const trailReducer = (
         ...state,
         isFetching: false
       };
+    case CLEAR_TRAIL:
+      return Object.assign({}, initialState.trail);
     default:
       return state;
   }

@@ -13,7 +13,10 @@ export const confirmFetchTrail = ({id, user, queries}) => ({
   queries
 });
 
-export const rejectFetchTrail = (message) => ({
-  type: actions.REJECT_FETCH_TRAIL,
-  message
+export const rejectFetchTrail = () => ({
+  type: actions.REJECT_FETCH_TRAIL
+});
+
+export const clearTrail = () => ({
+  type: actions.CLEAR_TRAIL
 });

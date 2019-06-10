@@ -69,3 +69,43 @@
       background: rgba($color-primary, 0.4);
     }
   }
+
+  %link-button {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    background: none;
+    border: none;
+    text-decoration: underline;
+    cursor: pointer;
+
+    &:not(:disabled) {
+      &:hover,
+      &:focus,
+      &:active {
+        text-decoration: none;
+      }
+    }
+  }
+
+    %link-button-danger {
+      color: $color-danger;
+
+      transition-property: color;
+      transition-duration: 0.1s;
+
+      &:not(:disabled) {
+        &:hover,
+        &:focus {
+          color: darken($color-danger, 10%);
+        }
+
+        &:active {
+          color: darken($color-danger, 20%);
+        }
+      }
+
+      &:disabled {
+        color: rgba($color-danger, 0.4);
+      }
+    }

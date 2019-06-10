@@ -3,7 +3,7 @@ import styles from './AuthPage.module.scss';
 import {connect} from 'react-redux';
 import classnames from 'classnames';
 
-import {fetchTrail} from '../../store/effects';
+import { fetchTrail } from '../../store/effects';
 
 class AuthPage extends React.Component {
   constructor(props) {
@@ -16,6 +16,11 @@ class AuthPage extends React.Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+
+    const cachedUser = localStorage.getItem('kaleidoscopeUser');
+    if (cachedUser) {
+      props.fetchTrail(cachedUser);
+    }
   };
 
   handleChange(type, e) {
@@ -38,43 +43,53 @@ class AuthPage extends React.Component {
   }
 
   render() {
+    const cachedUser = localStorage.getItem('kaleidoscopeUser');
     const inputClasses = classnames(styles.formFieldInput, {
       [styles.formFieldInputError]: this.state.errors.length > 0
     });
 
-    return (
-      <div className={styles.page}>
-        <form className={styles.form}
-              onSubmit={this.handleSubmit}>
-          <label className={styles.formField}>
-            <div className={styles.formFieldLabel}>
-              Enter your user id
-            </div>
-    
-            <input  type="text" 
-                    className={inputClasses}
-                    value={this.state.user}
-                    onChange={e => this.handleChange('user', e)}
-                    disabled={this.props.isFetching}/>
-            {this.state.errors.map((error, index) => 
-              <div key={index} className={styles.formFieldError}>{error}</div>   
-            )}
-          </label>
-    
-          <button type="submit" 
-                  className={styles.formButton}
-                  disabled={this.props.isFetching}>
-            {this.props.isFetching ? 'Logging in...' : 'Log in'}
-          </button>
-        </form>
-      </div>
-    );
+    if (cachedUser) {
+      return (
+        <div className={styles.page}>
+          <div className={styles.spinner}></div>
+        </div>
+      );
+    } else {
+      return (
+        <div className={styles.page}>
+          <form className={styles.form}
+                onSubmit={this.handleSubmit}>
+            <label className={styles.formField}>
+              <div className={styles.formFieldLabel}>
+                Enter your user id
+              </div>
+      
+              <input  type="text" 
+                      className={inputClasses}
+                      value={this.state.user}
+                      onChange={e => this.handleChange('user', e)}
+                      disabled={this.props.isFetching}/>
+              {this.state.errors.map((error, index) => 
+                <div key={index} className={styles.formFieldError}>{error}</div>   
+              )}
+            </label>
+      
+            <button type="submit" 
+                    className={styles.formButton}
+                    disabled={this.props.isFetching}>
+              {this.props.isFetching ? 'Logging in...' : 'Log in'}
+            </button>
+          </form>
+        </div>
+      );
+    }
   }
 }
 
 export default connect(
   state =>  ({
-    isFetching: state.trail.isFetching
+    isFetching: state.trail.isFetching,
+    cachedUser: state.trail.cachedUser
   }),
   dispatch => ({
     fetchTrail: (id) => dispatch(fetchTrail(id))

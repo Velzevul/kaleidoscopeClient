@@ -1,7 +1,8 @@
 import {
   requestFetchTrail,
   confirmFetchTrail,
-  rejectFetchTrail
+  rejectFetchTrail,
+  clearTrail
 } from './actionCreators';
 
 import * as api from '../api/server';
@@ -16,15 +17,25 @@ export const fetchTrail = (id) => {
         response => {
           if (response.success) {
             dispatch(confirmFetchTrail(response.data.trail));
+            localStorage['kaleidoscopeUser'] = response.data.trail.user;
           } else {
             console.error(`Cannot authenticate user ${id}. Message: ${response.data.message}`);
-            dispatch(rejectFetchTrail(response.data.message));
+            dispatch(rejectFetchTrail());
+            localStorage.removeItem('kaleidoscopeUser');
           }
         },
         () => {
-          dispatch(rejectFetchTrail('server error'));
           console.error('server error');
+          dispatch(rejectFetchTrail());
+          localStorage.removeItem('kaleidoscopeUser');
         }
       );
   };
 };
+
+export const logOut = () => {
+  return (dispatch) => {
+    localStorage.removeItem('kaleidoscopeUser');
+    dispatch(clearTrail());
+  }
+}

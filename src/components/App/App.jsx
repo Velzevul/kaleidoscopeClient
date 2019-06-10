@@ -1,40 +1,50 @@
 import React from 'react';
 import styles from './App.module.scss';
 import { connect } from 'react-redux';
-import AuthPage from '../AuthPage/AuthPage'
 
-class App extends React.Component {
-  render() {
-    if (!this.props.trail.user) {
-      return (
-        <AuthPage></AuthPage>
-      );
-    } else {
-      return (
-        <div class={styles.layout}>
-          <div class={styles.sideHeader}>
-            Your search trails
+import { logOut } from '../../store/effects';
+import AuthPage from '../AuthPage/AuthPage';
+
+const App = ({
+  trail, 
+  logOut
+}) => {
+  if (trail.user) {
+    return (
+      <div className={styles.layout}>
+        <div className={styles.sideHeader}>
+          <div className={styles.sideHeaderLeft}>
+            {trail.user}
           </div>
 
-          <div class={styles.sideBody}>
-            Trail to appear here
-          </div>
-
-          <div class={styles.mainHeader}>
-            Related search trails
-          </div>
-
-          <div class={styles.mainBody}>
-            Related search trails to appear here
+          <div className={styles.sideHeaderRight}>
+            <button type="button" 
+                    className={styles.logOutButton}
+                    onClick={logOut}>Log out</button>
           </div>
         </div>
-      );
-    }
+
+        <div className={styles.sideBody}>
+          Trail to appear here
+        </div>
+
+        <div className={styles.mainFull}>
+          
+        </div>
+      </div>
+    );
+  } else {
+    return (
+      <AuthPage></AuthPage>
+    );
   }
 }
 
 export default connect(
   state => ({
     trail: state.trail
+  }),
+  dispatch => ({
+    logOut: () => dispatch(logOut())
   })
 )(App);
