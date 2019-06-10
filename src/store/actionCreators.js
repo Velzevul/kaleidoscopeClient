@@ -1,31 +1,19 @@
 import * as actions from './actions';
 
 
-export const requestLoadPrimaryTrail = (id) => ({
-  type: actions.REQUEST_LOAD_PRIMARY_TRAIL,
-  id
+export const requestFetchTrail = (user) => ({
+  type: actions.REQUEST_FETCH_TRAIL,
+  user
 });
 
-export const confirmLoadPrimaryTrail = ({dates, images, queries}) => ({
-  type: actions.CONFIRM_LOAD_PRIMARY_TRAIL,
-  dates,
-  images,
+export const confirmFetchTrail = ({id, user, queries}) => ({
+  type: actions.CONFIRM_FETCH_TRAIL,
+  id,
+  user,
   queries
 });
 
-export const confirmExtendPrimaryTrail = ({dates, images, queries}) => ({
-  type: actions.CONFIRM_EXTEND_PRIMARY_TRAIL,
-  dates,
-  images,
-  queries
-});
-
-
-export const requestLoadRelatedTrails = () => ({
-  type: actions.REQUEST_LOAD_RELATED_TRAILS
-});
-
-export const confirmLoadRelatedTrails = ({trails}) => ({
-  type: actions.CONFIRM_LOAD_RELATED_TRAILS,
-  trails
+export const rejectFetchTrail = (message) => ({
+  type: actions.REJECT_FETCH_TRAIL,
+  message
 });

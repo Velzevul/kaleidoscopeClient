@@ -1,47 +1,30 @@
 import {
-  requestLoadPrimaryTrail,
-  confirmLoadPrimaryTrail,
-  confirmExtendPrimaryTrail,
-  requestLoadRelatedTrails,
-  confirmLoadRelatedTrails
+  requestFetchTrail,
+  confirmFetchTrail,
+  rejectFetchTrail
 } from './actionCreators';
 
+import * as api from '../api/server';
 
-export const laodPrimaryTrail = (id) => {
+
+export const fetchTrail = (id) => {
   return (dispatch) => {
-    dispatch(requestLoadPrimaryTrail(id));
+    dispatch(requestFetchTrail(id));
 
     return api.getTrail(id)
       .then(
-        response => dispatch(confirmLoadPrimaryTrail(response.payload)),
-        error => console.error(`failed to load trail with id ${id}. Error message: ${error.message}`)
-      );
-  };
-};
-
-export const extendPrimaryTrail = (payload) => {
-  return (dispatch, getState) => {
-    const primaryTrailId = getState().primaryTrail.id;
-
-    return api.extendTrail(primaryTrailId, payload)
-      .then(
-        response => dispatch(confirmExtendPrimaryTrail(response.payload)),
-        error => console.error(`failed to extend tail with id ${primaryTrailId}. Error message: ${error.message}`)
-      );
-  };
-};
-
-
-export const loadRelatedTrails = (query) => {
-  return (dispatch, getState) => {
-    const primaryTrailId = getState().primaryTrail.id;
-
-    dispatch(requestLoadRelatedTrails());
-
-    return api.getTrails({query, blacklist: [primaryTrailId]})
-      .then(
-        response => dispatch(confirmLoadRelatedTrails(response.payload)),
-        error => console.error(`failed to load related trails for query ${query}. Error message: ${error.message}`)
+        response => {
+          if (response.success) {
+            dispatch(confirmFetchTrail(response.data.trail));
+          } else {
+            console.error(`Cannot authenticate user ${id}. Message: ${response.data.message}`);
+            dispatch(rejectFetchTrail(response.data.message));
+          }
+        },
+        () => {
+          dispatch(rejectFetchTrail('server error'));
+          console.error('server error');
+        }
       );
   };
 };

@@ -1,0 +1,48 @@
+@import "../../variables.scss";
+
+%header {
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  
+  font-weight: 700;
+  color: white;
+  
+  background: $color-dark;
+}
+
+%body {
+  height: calc(100vh - $header-height);
+  overflow: auto;
+}
+
+.layout {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template: [] "side-header main-header" $header-height []
+                 [] "side-body   main-body" 1fr []
+                 / $sidebar-width  1fr;
+}
+
+.sideHeader {
+  grid-area: side-header;
+  border-right: 1px solid rgba(white, 0.15);
+  @extend %header;
+}
+
+.sideBody {
+  grid-area: side-body;
+  border-right: 1px solid rgba($color-light, 0.15);
+  @extend %body;
+}
+
+.mainHeader {
+  grid-area: main-header;
+  @extend %header;
+}
+
+.mainBody {
+  grid-area: main-body;
+  @extend %body;
+}
