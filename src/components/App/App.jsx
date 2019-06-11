@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 import { logOut } from '../../store/effects';
 import AuthPage from '../AuthPage/AuthPage';
+import TrailQuery from '../TrailQuery/TrailQuery';
 
 const App = ({
   trail, 
@@ -25,7 +26,9 @@ const App = ({
         </div>
 
         <div className={styles.sideBody}>
-          Trail to appear here
+          {trail.queries.map(q => 
+            <TrailQuery query={q}></TrailQuery>
+          )}
         </div>
 
         <div className={styles.mainFull}>
