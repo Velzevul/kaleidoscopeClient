@@ -1,7 +1,7 @@
 @import "../../variables.scss";
 
 .component {
-  padding: 24px 24px 0 24px;
+  padding: 12px 24px;
 }
 
   .header {
@@ -21,45 +21,3 @@
       color: $color-light;
       flex-shrink: 0;
     }
-    
-    
-.images {
-  display: grid;
-  grid-auto-rows: 80px;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 12px;
-  padding: 12px 0 12px 18px;
-  margin-left: 6px;
-  border-left: 2px solid rgba($color-light, 0.3);
-}
-   
-  .imageButton {
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    cursor: pointer;
-    
-    box-shadow: 0 0 0 1px rgba($color-light, 0.2);
-
-    transition-property: box-shadow;
-    transition-duration: 0.2s;
-    
-    &:hover {
-      outline: none;
-      box-shadow: 0 0 0 3px rgba($color-light, 0.5);
-    }
-
-    &:focus {
-      outline: none;
-    }
-  }
-
-  .image {
-    display: block;
-    opacity: 0;
-  }

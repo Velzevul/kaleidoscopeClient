@@ -56,7 +56,7 @@
   height: 64px;
 }
 
-  .spinner:after {
+  .spinner::after {
     content: " ";
     display: block;
     width: 46px;

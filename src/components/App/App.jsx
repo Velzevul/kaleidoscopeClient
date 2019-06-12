@@ -1,8 +1,10 @@
 import React from 'react';
-import styles from './App.module.scss';
 import { connect } from 'react-redux';
 
+import styles from './App.module.scss';
+
 import { logOut } from '../../store/effects';
+
 import AuthPage from '../AuthPage/AuthPage';
 import TrailQuery from '../TrailQuery/TrailQuery';
 
@@ -27,7 +29,9 @@ const App = ({
 
         <div className={styles.sideBody}>
           {trail.queries.map(q => 
-            <TrailQuery query={q}></TrailQuery>
+            <TrailQuery query={q}
+                        key={q.id}>
+            </TrailQuery>
           )}
         </div>
 

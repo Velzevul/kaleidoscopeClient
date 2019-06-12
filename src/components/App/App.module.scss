@@ -46,6 +46,7 @@
 .sideBody {
   grid-area: side-body;
   border-right: 1px solid rgba($color-light, 0.15);
+  padding-top: 12px;
   @extend %body;
 }
 

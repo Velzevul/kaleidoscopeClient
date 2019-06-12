@@ -20,3 +20,8 @@ export const rejectFetchTrail = () => ({
 export const clearTrail = () => ({
   type: actions.CLEAR_TRAIL
 });
+
+export const setActiveImage = (imageId) => ({
+  type: actions.SET_ACTIVE_IMAGE,
+  imageId
+});

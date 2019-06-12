@@ -1,7 +1,8 @@
 import React from 'react';
-import styles from './AuthPage.module.scss';
 import {connect} from 'react-redux';
 import classnames from 'classnames';
+
+import styles from './AuthPage.module.scss';
 
 import { fetchTrail } from '../../store/effects';
 

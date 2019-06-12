@@ -1,11 +1,23 @@
 import React from 'react';
 import moment from 'moment';
+
 import styles from './TrailQuery.module.scss';
-import { TIME_FORMAT } from '../../constants';
+
+import QueryImagesRow from '../QueryImagesRow/QueryImagesRow';
 
 const TrailQuery = ({
   query
 }) => {
+  const timeFormat = 'H:mm'
+  const imagesPerRow = 3;
+  const nRows = Math.ceil(query.images.length/imagesPerRow);
+  
+  let imageRows = [];
+
+  for (let i = 0; i < nRows; ++i) {
+    imageRows = [...imageRows, query.images.slice(imagesPerRow*i, imagesPerRow*(i+1))];
+  }
+
   return (
     <div className={styles.component}>
       <div className={styles.header}>
@@ -14,23 +26,15 @@ const TrailQuery = ({
         </div>
 
         <div className={styles.timestamp}>
-          {moment(query.timestamp).format(TIME_FORMAT)}
+          {moment(query.timestamp).format(timeFormat)}
         </div>
       </div>
       
-      <div className={styles.images}>
-        {query.images.map((i, index) => 
-          <button type="button"
-                  key={index}
-                  onClick={() => console.log('click')}
-                  className={styles.imageButton}
-                  style={{
-                    backgroundImage: `url(${i.thumbSrc})`
-                  }}>
-            <img src={i.thumbSrc} className={styles.image}/>
-          </button>
-        )}
-      </div>
+      {imageRows.map((row, index) => 
+        <QueryImagesRow images={row} 
+                        key={index}>
+        </QueryImagesRow>
+      )}
     </div>
   );
 };

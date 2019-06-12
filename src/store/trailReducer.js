@@ -18,18 +18,21 @@ const trailReducer = (
       };
     case CONFIRM_FETCH_TRAIL:
       return {
+        ...state,
         isFetching: false,
         id: action.id,
         user: action.user,
         queries: action.queries
-      }
+      };
     case REJECT_FETCH_TRAIL:
       return {
         ...state,
         isFetching: false
       };
     case CLEAR_TRAIL:
-      return Object.assign({}, initialState.trail);
+      return {
+        ...initialState.trail
+      };
     default:
       return state;
   }
