@@ -10,8 +10,8 @@ const QueryImagesRow = ({
   images,
   activeImageId
 }) => {
-  const imagePreview = images.find(i => i._id === activeImageId);
-  const imagePreviewIndex = images.indexOf(imagePreview);
+  const selectedImage = images.find(i => i._id === activeImageId);
+  const selectedImageIndex = images.indexOf(selectedImage);
 
   return (
     <div>
@@ -23,9 +23,9 @@ const QueryImagesRow = ({
         )}
       </div>
 
-      {imagePreview
-        ? <ImagePreview image={imagePreview}
-                        index={imagePreviewIndex}>
+      {selectedImage
+        ? <ImagePreview image={selectedImage}
+                        index={selectedImageIndex}>
           </ImagePreview>
         : null
       }

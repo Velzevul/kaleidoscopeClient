@@ -4,20 +4,20 @@
   padding: 12px 24px;
 }
 
-  .header {
-    margin-bottom: 12px;
-    display: flex;
-    align-items: center;
-  }
+.header {
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+}
 
-    .query {
-      font-weight: 600;
-      flex-grow: 1;
-      flex-shrink: 1;
-    }
+.query {
+  font-weight: 600;
+  flex-grow: 1;
+  flex-shrink: 1;
+}
 
-    .timestamp {
-      font-size: 12px;
-      color: $color-light;
-      flex-shrink: 0;
-    }
+.timestamp {
+  font-size: 12px;
+  color: $color-light;
+  flex-shrink: 0;
+}

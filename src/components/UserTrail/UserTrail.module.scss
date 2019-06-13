@@ -1,13 +1,17 @@
 @import '../../variables.scss';
 
 .component {
-  margin-bottom: 24px;
+  padding: 18px 0;
+  height: calc(100vh - #{$header-height});
+  overflow: auto;
+
+  border-right: 1px solid rgba($color-light, 0.5);
 }
 
-.day {
+.dateDelimiter {
   display: flex;
+  padding: 6px 0;
   align-items: center;
-  margin-bottom: 18px;
 
   font-size: 12px;
   font-weight: 700;
@@ -23,7 +27,7 @@
     width: 12px;
   }
   
-  &:after {
+  &::after {
     content: '';
     flex-shrink: 0;
     height: 1px;

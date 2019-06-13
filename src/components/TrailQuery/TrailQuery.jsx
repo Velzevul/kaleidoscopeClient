@@ -2,20 +2,18 @@ import React from 'react';
 import moment from 'moment';
 
 import styles from './TrailQuery.module.scss';
-
+import { TIME_FORMAT } from '../../constants';
 import QueryImagesRow from '../QueryImagesRow/QueryImagesRow';
 
 const TrailQuery = ({
   query
 }) => {
-  const timeFormat = 'H:mm'
-  const imagesPerRow = 3;
-  const nRows = Math.ceil(query.images.length/imagesPerRow);
-  
+  const nCols = 3;
+  const nRows = Math.ceil(query.images.length / nCols);
   let imageRows = [];
-
+  
   for (let i = 0; i < nRows; ++i) {
-    imageRows = [...imageRows, query.images.slice(imagesPerRow*i, imagesPerRow*(i+1))];
+    imageRows = [...imageRows, query.images.slice(nCols*i, nCols*(i+1))];
   }
 
   return (
@@ -26,7 +24,7 @@ const TrailQuery = ({
         </div>
 
         <div className={styles.timestamp}>
-          {moment(query.timestamp).format(timeFormat)}
+          {moment(query.timestamp).format(TIME_FORMAT)}
         </div>
       </div>
       

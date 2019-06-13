@@ -1,52 +1,17 @@
 @import "../../variables.scss";
-@import "../../ui.scss";
 
 .component {
-  width: 100vw;
+  // ...
+}
+
+.sidebar {
+  position: absolute;
+  left: 0;
+  right: 0;
   height: 100vh;
-  display: grid;
-  grid-template: [] "side-header main" $header-height []
-                 [] "side-body   main" 1fr []
-                 / $sidebar-width  1fr;
+  width: $sidebar-width;
 }
 
-.sideHeader {
-  grid-area: side-header;
-  border-right: 1px solid rgba(white, 0.15);
-  display: flex;
-  align-items: center;
-  display: flex;
-  align-items: center;
-  padding: 0 24px;
-  
-  font-weight: 700;
-  color: white;
-  
-  background: $color-dark;
-}
-
-  .sideHeaderLeft {
-    flex-grow: 1;
-    flex-shrink: 1;
-  }
-
-  .sideHeaderRight {
-    flex-shrink: 0;
-  }
-
-.sideBody {
-  grid-area: side-body;
-  border-right: 1px solid rgba($color-light, 0.5);
-  padding-top: 12px;
-  height: calc(100vh - $header-height);
-  overflow: auto;
-}
-
-.main {
-  grid-area: main;
-}
-
-.logOutButton {
-  @extend %link-button;
-  @extend %link-button-danger;
+.body {
+  margin-left: $sidebar-width;
 }

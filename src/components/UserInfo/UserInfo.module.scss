@@ -1,0 +1,25 @@
+@import '../../variables.scss';
+@import "../../ui.scss";
+
+.component {
+  display: flex;
+  align-items: center;
+  height: $header-height;
+  padding: 0 24px;
+  
+  font-weight: 700;
+  color: white;
+  
+  background: $color-dark;
+  border-right: 1px solid rgba(white, 0.15);
+}
+
+.userName {
+  flex-grow: 1;
+  flex-shrink: 0;
+}
+
+.logOutButton {
+  @extend %link-button;
+  @extend %link-button-danger;
+}
