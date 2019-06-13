@@ -1,28 +1,12 @@
 @import "../../variables.scss";
 @import "../../ui.scss";
 
-%header {
-  display: flex;
-  align-items: center;
-  padding: 0 24px;
-  
-  font-weight: 700;
-  color: white;
-  
-  background: $color-dark;
-}
-
-%body {
-  height: calc(100vh - $header-height);
-  overflow: auto;
-}
-
-.layout {
+.component {
   width: 100vw;
   height: 100vh;
   display: grid;
-  grid-template: [] "side-header main-header" $header-height []
-                 [] "side-body   main-body" 1fr []
+  grid-template: [] "side-header main" $header-height []
+                 [] "side-body   main" 1fr []
                  / $sidebar-width  1fr;
 }
 
@@ -31,7 +15,14 @@
   border-right: 1px solid rgba(white, 0.15);
   display: flex;
   align-items: center;
-  @extend %header;
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  
+  font-weight: 700;
+  color: white;
+  
+  background: $color-dark;
 }
 
   .sideHeaderLeft {
@@ -45,21 +36,15 @@
 
 .sideBody {
   grid-area: side-body;
-  border-right: 1px solid rgba($color-light, 0.15);
+  border-right: 1px solid rgba($color-light, 0.5);
   padding-top: 12px;
-  @extend %body;
+  height: calc(100vh - $header-height);
+  overflow: auto;
 }
 
-.mainHeader {
-  grid-area: main-header;
-  @extend %header;
+.main {
+  grid-area: main;
 }
-
-.mainBody {
-  grid-area: main-body;
-  @extend %body;
-}
-
 
 .logOutButton {
   @extend %link-button;
