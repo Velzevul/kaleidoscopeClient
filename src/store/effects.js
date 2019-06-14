@@ -1,5 +1,6 @@
 import * as actionCreators from './actionCreators';
-import * as api from '../api/server';
+// import * as api from '../api/server';
+import * as api from '../api/mock';
 
 
 export const fetchTrail = (id) => {
@@ -7,8 +8,7 @@ export const fetchTrail = (id) => {
     dispatch(actionCreators.requestFetchTrail(id));
 
     return api.getTrail(id)
-      .then(
-        response => {
+      .then(response => {
           if (response.success) {
             dispatch(actionCreators.confirmFetchTrail(response.data.trail));
             localStorage['kaleidoscopeUser'] = response.data.trail.user;

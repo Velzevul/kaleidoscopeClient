@@ -52,7 +52,6 @@
   }
 
 .spinner {
-  display: inline-block;
   width: 64px;
   height: 64px;
 }
@@ -64,8 +63,8 @@
     height: 46px;
     margin: 1px;
     border-radius: 50%;
-    border: 5px solid rgba(white, 0.8);
-    border-color: rgba(white, 0.8) transparent rgba(white, 0.8) transparent;
+    border: 5px solid rgba($color-dark, 0.8);
+    border-color: rgba($color-dark, 0.8) transparent rgba($color-dark, 0.8) transparent;
     animation: spinner 1.2s linear infinite;
   }
 
