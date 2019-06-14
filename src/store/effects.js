@@ -44,8 +44,8 @@ export const fetchRelatedTrails = (imageId) => {
       dispatch(actionCreators.requestFetchRelatedTrails());
 
       setTimeout(() => {
-        dispatch(actionCreators.confirmFetchRelatedTrails([]));
-      }, 2000);
+        dispatch(actionCreators.confirmFetchRelatedTrails(['a','b', 'c', 'd', 'e']));
+      }, 500);
     }
   }
 }
