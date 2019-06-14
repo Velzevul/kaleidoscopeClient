@@ -19,12 +19,12 @@ const TrailQuery = ({
   return (
     <div className={styles.component}>
       <div className={styles.header}>
-        <div className={styles.query}>
-          {query.q}
-        </div>
-
         <div className={styles.timestamp}>
           {moment(query.timestamp).format(TIME_FORMAT)}
+        </div>
+
+        <div className={styles.query}>
+          {query.q}
         </div>
       </div>
       

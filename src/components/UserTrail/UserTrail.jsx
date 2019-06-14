@@ -5,6 +5,7 @@ import moment from 'moment';
 import styles from './UserTrail.module.scss';
 import { DATE_FORMAT } from '../../constants';
 import TrailQuery from '../TrailQuery/TrailQuery';
+import DateDelimiter from '../DateDelimiter/DateDelimiter';
 
 const UserTrail = ({
   queries
@@ -17,9 +18,7 @@ const UserTrail = ({
 
     if (currentQueryDate !== previousQueryDate) {
       elements.push(
-        <div className={styles.dateDelimiter}>
-          {currentQueryDate}
-        </div>
+        <DateDelimiter date={currentQueryDate}></DateDelimiter>
       );
     }
 

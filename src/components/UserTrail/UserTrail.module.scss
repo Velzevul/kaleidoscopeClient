@@ -1,38 +1,6 @@
 @import '../../variables.scss';
 
 .component {
-  padding: 18px 0;
   height: calc(100vh - #{$header-height});
   overflow: auto;
-
-  border-right: 1px solid rgba($color-light, 0.5);
-}
-
-.dateDelimiter {
-  display: flex;
-  padding: 6px 0;
-  align-items: center;
-
-  font-size: 12px;
-  font-weight: 700;
-
-  color: rgba($color-light, 0.7);
-
-  &::before {
-    content: '';
-    flex-shrink: 1;
-    height: 1px;
-    background: rgba($color-light, 0.5);
-    margin-right: 12px;
-    width: 12px;
-  }
-  
-  &::after {
-    content: '';
-    flex-shrink: 0;
-    height: 1px;
-    flex-grow: 1;
-    background: rgba($color-light, 0.5);
-    margin-left: 12px;
-  }
 }
