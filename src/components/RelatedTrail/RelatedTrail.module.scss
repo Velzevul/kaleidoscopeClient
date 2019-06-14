@@ -1,10 +1,17 @@
 @import '../../variables.scss';
 
 .component {
-  padding: 24px;
-  background: white;;
+  padding-bottom: 24px;
+}
+
+.userName {
+  text-align: center;
+  margin-bottom: 6px;
+}
+
+.card {
+  background: white;
   border: 1px solid rgba($color-light, 0.5);
   border-radius: 3px;
-  margin-bottom: 24px;
-
+  padding: 24px;
 }
