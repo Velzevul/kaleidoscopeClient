@@ -1,10 +1,10 @@
 import React from 'react';
 import moment from 'moment';
 
-import styles from './DateDelimiter.module.scss';
+import styles from './TrailDateDelimiter.module.scss';
 import { DATE_FORMAT } from '../../constants';
 
-const DateDelimiter = ({
+const TrailDateDelimiter = ({
   date
 }) => {
   let dateFormat = '';
@@ -24,4 +24,4 @@ const DateDelimiter = ({
   );
 }
 
-export default DateDelimiter;
+export default TrailDateDelimiter;

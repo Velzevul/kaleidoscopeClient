@@ -8,8 +8,7 @@ import UserTrail from '../UserTrail/UserTrail';
 import RelatedTrails from '../RelatedTrails/RelatedTrails';
 
 const App = ({
-  user, 
-  logOut
+  user
 }) => {
   if (user) {
     return (

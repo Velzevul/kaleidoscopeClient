@@ -1,11 +1,11 @@
 import React from 'react';
 import moment from 'moment';
 
-import styles from './TrailQuery.module.scss';
+import styles from './UserTrailQuery.module.scss';
 import { TIME_FORMAT } from '../../constants';
-import QueryImagesRow from '../QueryImagesRow/QueryImagesRow';
+import UserTrailImagesRow from '../UserTrailImagesRow/UserTrailImagesRow';
 
-const TrailQuery = ({
+const UserTrailQuery = ({
   query
 }) => {
   const nCols = 3;
@@ -29,12 +29,12 @@ const TrailQuery = ({
       </div>
       
       {imageRows.map((row, index) => 
-        <QueryImagesRow images={row} 
+        <UserTrailImagesRow images={row} 
                         key={index}>
-        </QueryImagesRow>
+        </UserTrailImagesRow>
       )}
     </div>
   );
 };
 
-export default TrailQuery;
+export default UserTrailQuery;

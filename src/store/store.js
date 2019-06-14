@@ -4,6 +4,7 @@ import ReduxThunk from 'redux-thunk';
 
 import trailReducer from './trailReducer';
 import uiReducer from './uiReducer';
+import relatedTrailsReducer from './relatedTrailsReducer';
 
 const middleware = [ReduxThunk];
 
@@ -15,7 +16,8 @@ if (process.env.NODE_ENV === 'development') {
 
 const rootReducer = combineReducers({
   trail: trailReducer,
-  ui: uiReducer
+  ui: uiReducer,
+  relatedTrails: relatedTrailsReducer
 });
 
 const configureStore = (initialState = {}) => {

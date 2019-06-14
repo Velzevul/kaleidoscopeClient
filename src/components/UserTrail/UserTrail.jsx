@@ -4,8 +4,8 @@ import moment from 'moment';
 
 import styles from './UserTrail.module.scss';
 import { DATE_FORMAT } from '../../constants';
-import TrailQuery from '../TrailQuery/TrailQuery';
-import DateDelimiter from '../DateDelimiter/DateDelimiter';
+import UserTrailQuery from '../UserTrailQuery/UserTrailQuery';
+import TrailDateDelimiter from '../UserTrailDateDelimiter/TrailDateDelimiter';
 
 const UserTrail = ({
   queries
@@ -18,12 +18,12 @@ const UserTrail = ({
 
     if (currentQueryDate !== previousQueryDate) {
       elements.push(
-        <DateDelimiter date={currentQueryDate}></DateDelimiter>
+        <TrailDateDelimiter key={query.timestamp} date={currentQueryDate}></TrailDateDelimiter>
       );
     }
 
     elements.push(
-      <TrailQuery query={query}></TrailQuery>
+      <UserTrailQuery key={query.id} query={query}></UserTrailQuery>
     );
   });
 

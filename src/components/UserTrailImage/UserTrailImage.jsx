@@ -2,11 +2,11 @@ import React from 'react';
 import classnames from 'classnames';
 import { connect } from 'react-redux';
 
-import styles from './QueryImage.module.scss';
+import styles from './UserTrailImage.module.scss';
 
-import { setActiveImage } from '../../store/actionCreators';
+import { fetchRelatedTrails } from '../../store/effects';
 
-const QueryImage = ({
+const UserTrailImage = ({
   image,
   activeImageId,
   toggleSelectImage
@@ -35,6 +35,6 @@ export default connect(
     activeImageId: state.ui.activeImageId
   }),
   dispatch => ({
-    toggleSelectImage: (id) => dispatch(setActiveImage(id))
+    toggleSelectImage: (id) => dispatch(fetchRelatedTrails(id))
   })
-)(QueryImage);
+)(UserTrailImage);

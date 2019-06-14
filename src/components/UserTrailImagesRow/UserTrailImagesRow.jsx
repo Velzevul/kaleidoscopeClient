@@ -1,12 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import styles from './QueryImagesRow.module.scss';
+import styles from './UserTrailImagesRow.module.scss';
 
-import QueryImage from '../QueryImage/QueryImage';
-import ImagePreview from '../ImagePreview/ImagePreview';
+import UserTrailImage from '../UserTrailImage/UserTrailImage';
+import UserTrailImagePreview from '../UserTrailImagePreview/UserTrailImagePreview';
 
-const QueryImagesRow = ({
+const UserTrailImagesRow = ({
   images,
   activeImageId
 }) => {
@@ -17,16 +17,16 @@ const QueryImagesRow = ({
     <div>
       <div className={styles.images}>
         {images.map(i => 
-          <QueryImage image={i} 
+          <UserTrailImage image={i} 
                       key={i._id}>
-          </QueryImage>
+          </UserTrailImage>
         )}
       </div>
 
       {selectedImage
-        ? <ImagePreview image={selectedImage}
+        ? <UserTrailImagePreview image={selectedImage}
                         index={selectedImageIndex}>
-          </ImagePreview>
+          </UserTrailImagePreview>
         : null
       }
     </div>
@@ -37,4 +37,4 @@ export default connect(
   state => ({
     activeImageId: state.ui.activeImageId
   })
-)(QueryImagesRow);
+)(UserTrailImagesRow);

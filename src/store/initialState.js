@@ -7,5 +7,9 @@ export default {
     id: null,
     user: null,
     queries: []
+  },
+  relatedTrails: {
+    trails: null,
+    isFetching: true
   }
 };

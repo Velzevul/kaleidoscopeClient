@@ -2,9 +2,9 @@ import React from 'react';
 import classnames from 'classnames';
 import { connect } from 'react-redux';
 
-import styles from './ImagePreview.module.scss';
+import styles from './UserTrailImagePreview.module.scss';
 
-const ImagePreview = ({
+const UserTrailImagePreview = ({
   image,
   index
 }) => {
@@ -25,4 +25,4 @@ const ImagePreview = ({
   )
 }
 
-export default connect()(ImagePreview);
+export default connect()(UserTrailImagePreview);

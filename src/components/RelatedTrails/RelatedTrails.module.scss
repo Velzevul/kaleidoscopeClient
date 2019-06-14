@@ -1,0 +1,46 @@
+@import '../../variables.scss';
+
+.component {
+  // ...
+}
+
+.componentCenter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.emptyStateTitle {
+  font-size: 24px;
+  line-height: 24px;
+  font-weight: 300;
+  color: rgba($color-dark, 0.5);
+}
+
+.spinner {
+  display: inline-block;
+  width: 64px;
+  height: 64px;
+}
+
+  .spinner::after {
+    content: " ";
+    display: block;
+    width: 46px;
+    height: 46px;
+    margin: 1px;
+    border-radius: 50%;
+    border: 5px solid rgba($color-dark, 0.5);
+    border-color: rgba($color-dark, 0.5) transparent rgba($color-dark, 0.5) transparent;
+    animation: spinner 1.2s linear infinite;
+  }
+
+  @keyframes spinner {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
